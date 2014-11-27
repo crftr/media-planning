@@ -1,0 +1,9 @@
+= bootstrap_flash
+
+:javascript
+  $(document).ready( function() {
+    $(".alert-success").delay(2000).fadeTo('slow', 0.0, function () { $(this).remove(); });
+    $(".alert-info").delay(8000).fadeTo('slow',    0.0, function () { $(this).remove(); });
+    // $(".alert-warning").delay(8000).fadeTo('slow', 0.0, function () { $(this).remove(); });
+    // $(".alert-danger").delay(8000).fadeTo('slow',  0.0, function () { $(this).remove(); });
+  } );

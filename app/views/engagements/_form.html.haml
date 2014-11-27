@@ -1,0 +1,41 @@
+= simple_form_for @form, url: engagements_path do |f|
+  = f.input :client, collection: @form.choices_for_client
+  = f.input :engagement_name, html: { id: 'engagement_name' }
+  .form-group
+    .action-group
+      = f.button :submit, 'Save new engagement', class: 'btn-primary'
+
+:coffeescript
+  
+  $('#modalNewEngagement').on "shown.bs.modal", ->
+    $('#new_mplan_creators_engagement_creator').bootstrapValidator 'resetForm', true
+    $('#new_mplan_creators_engagement_creator').find('[name="mplan_creators_engagement_creator[client]"]').focus()
+ 
+  $ ->
+    $("#new_mplan_creators_engagement_creator").bootstrapValidator
+      message: "This value is not valid"
+      feedbackIcons:
+        valid: "glyphicon glyphicon-ok"
+        invalid: "glyphicon glyphicon-remove"
+        validating: "glyphicon glyphicon-refresh"
+
+      fields:
+
+        'mplan_creators_engagement_creator[client]':
+          message: "The selection is not valid"
+          validators:
+            notEmpty:
+              message: "The client is required and cannot be empty"
+        
+        'mplan_creators_engagement_creator[engagement_name]':
+          message: 'The name is not valid'
+          validators:
+            notEmpty:
+              message: "The engagement name is required and cannot be empty"
+            stringLength:
+              min: 2
+              max: 30
+              message: "The name must be more than 2 and less than 30 characters long"
+            regexp:
+              regexp: /^[a-zA-Z0-9\s_]+$/
+              message: "The name can only consist of alphanumerics, spaces, and underscores"

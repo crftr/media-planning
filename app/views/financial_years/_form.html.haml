@@ -1,0 +1,56 @@
+= simple_form_for @form, url: financial_years_path do |f|
+  = f.input :name, html: { id: 'type_name' }
+  
+  = f.input :start_date, as: :string, input_html: { class: 'start_date' }
+  = f.input :start_date, as: :hidden, input_html: { id: 'start_date_alt' }
+
+  = f.input :end_date, as: :string, input_html: { class: 'end_date' }
+  = f.input :end_date, as: :hidden, input_html: { id: 'end_date_alt' }
+
+  .form-group
+    .action-group
+      = f.button :submit, 'Save new financial year', class: 'btn-primary'
+
+:coffeescript
+  
+  $('#modalNewFinancialYear').on "shown.bs.modal", ->
+    $('#new_mplan_creators_financial_year_creator').bootstrapValidator 'resetForm', true
+    $('#new_mplan_creators_financial_year_creator').find('[name="mplan_creators_financial_year_creator[name]"]').focus()
+
+  $ ->
+    singleDaterangePicker('start_date')
+    singleDaterangePicker('end_date')
+
+    $("#new_mplan_creators_financial_year_creator").bootstrapValidator
+      message: "This value is not valid"
+      feedbackIcons:
+        valid: "glyphicon glyphicon-ok"
+        invalid: "glyphicon glyphicon-remove"
+        validating: "glyphicon glyphicon-refresh"
+
+      fields:
+        
+        'mplan_creators_financial_year_creator[name]':
+          message: 'The name is not valid'
+          validators:
+            notEmpty:
+              message: "The name of the financial year is required and cannot be empty"
+            stringLength:
+              min: 2
+              max: 30
+              message: "The name must be more than 2 and less than 30 characters long"
+            regexp:
+              regexp: /^[a-zA-Z0-9\s_]+$/
+              message: "The name can only consist of alphanumerics, spaces, and underscores"
+
+        'mplan_creators_financial_year_creator[start_date]':
+          message: 'The date is not valid'
+          validators:
+            notEmpty:
+              message: "The date is required and cannot be empty"
+
+        'mplan_creators_financial_year_creator[end_date]':
+          message: 'The date is not valid'
+          validators:
+            notEmpty:
+              message: "The date is required and cannot be empty"

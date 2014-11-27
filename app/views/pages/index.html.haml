@@ -1,0 +1,21 @@
+= render 'shared/notice'
+.site-wrapper
+  .site-wrapper-inner
+    .cover-container
+      .masthead.clearfix
+        .inner
+          %h3.masthead-brand MediaPlanning
+          %ul.nav.masthead-nav
+            %li.active
+              %a{href: "#"} Home
+            %li
+              %a{href: "#"} Features
+            %li
+              %a{href: "#"} Contact
+            %li
+              %a{href: new_user_session_path, style:'color: #2494F2;'} Member Access
+      .inner.cover
+        %h1.cover-heading MediaPlanning is a science
+        %p.lead ... which would be obvious if you had our tools
+        %p.lead
+          %a.btn.btn-lg.btn-default{href: "#"} Learn more

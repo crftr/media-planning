@@ -1,0 +1,36 @@
+:coffeescript
+  $ ->
+    showSidebarItem('engagements')
+    
+    $('#datatable').dataTable({
+      # disable the label for the search field
+      "oLanguage": { "sSearch": '' }
+      # disable sorting on the actions column
+      "aoColumns": [
+        null,
+        null,
+        { "bSortable": false }
+      ]
+    });
+    $('.dataTables_filter input').attr("placeholder", "Search");
+
+.block-flat
+  .header
+    %h3 Engagements
+  .content
+    .table-responsive
+      #datatable_wrapper.dataTables_wrapper.form-inline{:role => "grid"}
+        %table#datatable.mplan-datatable.table.table-bordered.dataTable{"aria-describedby" => "client list"}
+          %thead
+            %tr{:role => "row"}
+              %th.sorting_desc{"aria-controls" => "datatable", "aria-label" => "Engagement name: activate to sort column ascending", "aria-sort" => "descending", :colspan => "1", :role => "columnheader", :rowspan => "1", :style => "width: auto;", :tabindex => "0"} Engagement name
+              %th.sorting_desc{"aria-controls" => "datatable", "aria-label" => "Client name: activate to sort column ascending", "aria-sort" => "descending", :colspan => "1", :role => "columnheader", :rowspan => "1", :style => "width: auto;", :tabindex => "0"} Client
+              %th{"aria-controls" => "datatable", "aria-label" => "Actions", :colspan => "1", :role => "columnheader", :rowspan => "1", :style => "width: 131px;", :tabindex => "0"}
+          %tbody{"aria-live" => "polite", "aria-relevant" => "all", :role => "alert"}
+
+            - @engagements.each do |engagement|
+              %tr.gradeA
+                %td.sorting_1 #{engagement.name}
+                %td.sorting_1 #{engagement.client}
+                %td.center
+                  = render partial: 'shared/datatable/actions'

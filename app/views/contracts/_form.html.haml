@@ -1,0 +1,55 @@
+= simple_form_for @form, url: contracts_path do |f|
+  = f.input :campaign_type, collection: @form.choices_for_campaign_type
+  = f.input :financial_year, collection: @form.choices_for_financial_year
+  = f.input :vendor, collection: @form.choices_for_vendor
+
+  / = f.input :engagements, as: :association, collection: @form.choices_for_engagement
+  
+  %hr
+  
+  = f.input :contract_date, as: :string, input_html: { class: 'contract_date'}
+  = f.input :contract_date, as: :hidden, input_html: { id: 'contract_date_alt'}  
+
+  = f.input :contract_number
+  = f.input :campaign_name
+  = f.input :amount
+
+  .form-group
+    .action-group
+      = f.button :submit, 'Save new contract', class: 'btn-primary'
+
+:coffeescript
+  $ ->
+    $('#new_mplan_creators_contract_creator').find('[name="mplan_creators_contract_creator[campaign_type]"]').focus()
+
+    singleDaterangePicker('contract_date')
+
+    ###
+    $("#new_mplan_creators_contract_creator").bootstrapValidator
+      message: "This value is not valid"
+      feedbackIcons:
+        valid: "glyphicon glyphicon-ok"
+        invalid: "glyphicon glyphicon-remove"
+        validating: "glyphicon glyphicon-refresh"
+
+      fields:
+
+        'mplan_creators_contract_creator[media_type]':
+          message: "The selection is not valid"
+          validators:
+            notEmpty:
+              message: "The media type is required"
+        
+        'mplan_creators_contract_creator[name_of_type]':
+          message: 'The name is not valid'
+          validators:
+            notEmpty:
+              message: "The name of the type is required and cannot be empty"
+            stringLength:
+              min: 2
+              max: 30
+              message: "The name must be more than 2 and less than 30 characters long"
+            regexp:
+              regexp: /^[a-zA-Z0-9\s_]+$/
+              message: "The name can only consist of alphanumerics, spaces, and underscores"
+    ###

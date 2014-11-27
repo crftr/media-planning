@@ -1,0 +1,87 @@
+.cl-sidebar{"data-intro" => "Fixed Sidebar... It adjust to your needs.", "data-position" => "right", "data-step" => "1"}
+  .cl-toggle
+    %i.fa.fa-bars
+  .cl-navblock
+    .menu-space
+      .content
+        %ul.cl-vnavigation
+          %li
+            %a{href: '#'}
+              %i.fa.fa-home
+              %span Dashboards
+            %ul.sub-menu
+              %li.active#home
+                = link_to 'Home', user_path(current_user)
+          %li
+            %a{href: '#'}
+              %i.fa.fa-bar-chart-o
+              %span Reporting
+            %ul.sub-menu
+              %li#report
+                = link_to 'Coming soon...', '#'
+          %li
+            %a{href: '#'}
+              %i.fa.fa-file-text-o
+              %span Contracts
+            %ul.sub-menu
+              %li#contracts
+                = link_to 'Show Contracts', contracts_path
+              %li#addcontract
+                = link_to 'Add New Contract', new_contract_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-ticket
+              %span Tickets
+            %ul.sub-menu
+              %li#tickets
+                = link_to 'Show Tickets', '#'
+          %li
+            %a{href: '#'}
+              %i.fa.fa-users
+              %span Clients
+            %ul.sub-menu
+              %li#clients
+                = link_to 'Show Clients', clients_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-film
+              %span Engagements
+            %ul.sub-menu
+              %li#engagements
+                = link_to 'Show Engagements', engagements_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-bullhorn
+              %span Vendors
+            %ul.sub-menu
+              %li#vendors
+                = link_to 'Show Vendors', vendors_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-building-o
+              %span Organization
+            %ul.sub-menu
+              %li#financialyears
+                = link_to 'Financial Years', financial_years_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-list-ul
+              %span System Types
+            %ul.sub-menu
+              %li#advertisings
+                = link_to 'Advertising Types', advertising_types_path
+              %li#campaigns
+                = link_to 'Campaign Types', campaign_types_path
+              %li#medias
+                = link_to 'Media Types', media_types_path
+          %li
+            %a{href: '#'}
+              %i.fa.fa-user
+              %span User Accounts
+            %ul.sub-menu
+              %li#users
+                = link_to 'Coming soon...', '#'
+    -#.text-right.collapse-button{style: "padding:7px 9px;"}
+    -#  %input.form-control.search{placeholder: "Search...", type: "text"}/
+    -#  %button#sidebar-collapse.btn.btn-default{style: ""}
+    -#    %i.fa.fa-angle-left{style: "color:#fff;"}

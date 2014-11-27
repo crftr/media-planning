@@ -1,0 +1,511 @@
+:javascript
+  $(document).ready(function(){
+    App.dashBoard();
+  });
+
+.stats_bar
+  .butpro.butstyle{"data-intro" => "<strong>Beautiful Elements</strong> <br/> If you are looking for a different UI, this is for you!.", "data-step" => "2"}
+    .sub
+      %h2 ATTENDANCE
+      %span#total_clientes 130k
+    .stat
+      %span.spk1
+        %canvas{height: "16", style: "display: inline-block; width: 74px; height: 16px; vertical-align: top;", width: "74"}
+  .butpro.butstyle
+    .sub
+      %h2 GROSS SALES
+      %span $951,611
+    .stat
+      %span.up 13.5%
+  .butpro.butstyle
+    .sub
+      %h2 AD SPEND TO DATE
+      %span $52,340
+    .stat
+      %span.up 2.7%
+  .butpro.butstyle
+    .sub
+      %h2 GROSS IMPRESSIONS
+      %span 18
+    .stat
+      %span.equal 0%
+  .butpro.butstyle
+    .sub
+      %h2 ACQUISITION COST
+      %span 3%
+    .stat
+      %span.spk2
+  .butpro.butstyle
+    .sub
+      %h2 REMAINING AD BUDGET
+      %span 184
+    .stat
+      %span.spk3
+
+.row
+  .col-sm-12.col-md-12
+    .block
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
+      = yield
+
+  .col-sm-12
+    .block-flat
+      .header
+        %h3 Advanced Controls
+      .content
+        %form.form-horizontal.group-border-dashed{action: '#', style: "border-radius: 0px;"}
+        .form-group
+          %label.col-sm-3.control-label
+            Select2
+          .col-sm-6
+            %select#experimental-select2
+              %optgroup{label: "Alaskan/Hawaiian Time Zone"}
+                %option{value: "AK"} Alaska
+                %option{value: "HI"} Hawaii
+              %optgroup{label: "Pacific Time Zone"}
+                %option{value: "CA"} California
+                %option{value: "NV"} Nevada
+                %option{value: "OR"} Oregon
+                %option{value: "WA"} Washington
+              %optgroup{label: "Mountain Time Zone"}
+                %option{value: "AZ"} Arizona
+                %option{value: "CO"} Colorado
+                %option{value: "ID"} Idaho
+                %option{value: "MT"} Montana
+                %option{value: "NE"} Nebraska
+                %option{value: "NM"} New Mexico
+                %option{value: "ND"} North Dakota
+                %option{value: "UT"} Utah
+                %option{value: "WY"} Wyoming
+              %optgroup{label: "Central Time Zone"}
+                %option{value: "AL"} Alabama
+                %option{value: "AR"} Arkansas
+                %option{value: "IL"} Illinois
+                %option{value: "IA"} Iowa
+                %option{value: "KS"} Kansas
+                %option{value: "KY"} Kentucky
+                %option{value: "LA"} Louisiana
+                %option{value: "MN"} Minnesota
+                %option{value: "MS"} Mississippi
+                %option{value: "MO"} Missouri
+                %option{value: "OK"} Oklahoma
+                %option{value: "SD"} South Dakota
+                %option{value: "TX"} Texas
+                %option{value: "TN"} Tennessee
+                %option{value: "WI"} Wisconsin
+              %optgroup{label: "Eastern Time Zone"}
+                %option{value: "CT"} Connecticut
+                %option{value: "DE"} Delaware
+                %option{value: "FL"} Florida
+                %option{value: "GA"} Georgia
+                %option{value: "IN"} Indiana
+                %option{value: "ME"} Maine
+                %option{value: "MD"} Maryland
+                %option{value: "MA"} Massachusetts
+                %option{value: "MI"} Michigan
+                %option{value: "NH"} New Hampshire
+                %option{value: "NJ"} New Jersey
+                %option{value: "NY"} New York
+                %option{value: "NC"} North Carolina
+                %option{value: "OH"} Ohio
+                %option{value: "PA"} Pennsylvania
+                %option{value: "RI"} Rhode Island
+                %option{value: "SC"} South Carolina
+                %option{value: "VT"} Vermont
+                %option{value: "VA"} Virginia
+                %option{value: "WV"} West Virginia
+
+  :coffeescript
+    $ ->
+      $("#experimental-select2").select2(formatNoMatches: notFound, width: "100%")
+
+    notFound = ->
+      "<div><a href='#' onclick='alertMeYo()'>Add new: " + $('.select2-input')[0].value + "</a></div>"
+
+    root = exports ? this
+    root.alertMeYo = ->
+      suppliedValue = $('.select2-input')[0].value
+      alert "do routine to add " + suppliedValue + " ..."
+
+.row.dash-cols
+  .col-sm-6.col-md-6
+    .block
+      .header.no-border
+        %h2 Sales
+      .content.blue-chart{"data-intro" => "<strong>Unique Styled Plugins</strong> <br/> We put love in every detail to give a great user experience!.", "data-step" => "3"}
+        #site_statistics{style: "height:180px;"}
+      .content
+        .stat-data
+          .stat-blue
+            %h2 1,254
+            %span Total Sales
+        .stat-data
+          .stat-number
+            %div
+              %h2 83
+            %div
+              Total hits
+              br/
+              %span (Daily)
+          .stat-number
+            %div
+              %h2 57
+            %div
+              Views
+              %br/
+              %span (Daily)
+        .clear
+  .col-sm-6.col-md-6
+    .block
+      .header.no-border
+        %h2 Monitor
+      .content.red-chart
+        #site_statistics2{style: "height:152px;"}
+      .content.no-padding
+        %table.red
+          %thead
+            %tr
+              %th Name
+              %th.right
+                %span> 25%
+                C.P.U
+              %th.right
+                %span> 29%
+                Memory
+              %th.right
+                %span> 16%
+                Disc
+          %tbody.no-border-x
+            %tr
+              %td{style: "width:40%;"}
+                %i.fa.fa-sitemap
+                Server load
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-tasks
+                Apps
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-signal
+                Process
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-bolt
+                Wamp Server
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+.row.dash-cols
+  .col-sm-6.col-md-6
+    .block
+      .header
+        %h2
+          Invoice
+          %span.pull-right #45
+        %h3 Your order has been delivered
+      .content.no-padding
+        %ul.items
+          %li
+            %i.fa.fa-file-text>
+            Filet Mignon
+            %span.pull-right.value $35
+            %small Italian food
+          %li
+            %i.fa.fa-file-text>
+            Blue beer
+            %span.pull-right.value $35
+            %small Bar drinks
+          %li
+            %i.fa.fa-file-text>
+            T-shirts
+            %span.pull-right.value $35
+            %small Software development
+          %li
+            %i.fa.fa-file-text>
+            Cloud App
+            %span.pull-right.value $35
+            %small Game department
+          %li
+            %i.fa.fa-file-text>
+            Black Metal Music
+            %span.pull-right.value $35
+            %small Metal genre
+      .total-data.bg-blue
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %h2
+            Total
+            %b.caret
+            %span.pull-right $25.3
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"} Print receipt
+          %li
+            %a{href: "#"} Send invoice to...
+          %li
+            %a{href: "#"} Payment
+  .col-sm-6.col-md-6
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", href: "#home"} Home
+      %li
+        %a{"data-toggle" => "tab", href: "#profile"} Profile
+      %li
+        %a{"data-toggle" => "tab", href: "#messages"} Messages
+    .tab-content
+      #home.tab-pane.active.cont
+        %h2.text-center Our Experience
+        #piec{style: "height:300px;margin-top:25px;"}
+      #profile.tab-pane.cont
+        %h2 Typography
+        %p
+          Pellentesque ac quam hendrerit, viverra leo eu,
+          = succeed "." do
+            %b dapibus mi
+          = succeed "," do
+            %i Donec viverra
+          = succeed "." do
+            %a{href: "#"} placerat
+        %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce gravida est eros, eget porta leo fringilla et.
+        %a{href: "#"} Read more
+      #messages.tab-pane
+        %h2.hthin A Lorem Ipsum Story
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a metus pulvinar turpis porttitor imperdiet vel nec justo. Nam id orci purus. Mauris arcu velit, auctor et aliquam quis, rhoncus a velit. Sed laoreet ultrices dolor eget vehicula. Morbi adipiscing euismod nisi, eget tincidunt arcu laoreet at.
+        %p Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam et tortor ultricies, mollis nunc eget, gravida sapien.
+.row.dash-cols
+  .col-sm-6.col-md-6
+    .widget-block.white-box.calendar-box
+      .col-md-6.blue-box.calendar.no-padding
+        .padding.ui-datepicker
+      .col-md-6
+        .padding
+          %h2.text-center Monday
+          %h1.day 2
+    .widget-block.photo.white-box.weather-box
+      .col-md-6.padding.photo
+        %h2.text-center Monday
+        %h1.day 10/12/2019
+      .col-md-6.red-box
+        .padding.text-center
+          %canvas#sun-icon{height: "215", width: "130"}
+  .col-sm-6.col-md-6
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", href: "#chat-1"} Adam
+      %li
+        %a{"data-toggle" => "tab", href: "#chat-2"} Mike
+      %li
+        %a{"data-toggle" => "tab", href: "#chat-3"} Lucy
+    .tab-content.no-padding
+      #chat-1.tab-pane.active.cont
+        .chat-wi
+          .chat-space.nano.nscroller
+            .chat-content.content
+              .chat-conv
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar1_50.jpg"), title: "MiguelMich"}/
+                .c-bubble
+                  .msg Hello, what can i do for you?
+                  %div
+                    %small 12:20 p.m.
+                  %span
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar_50.jpg"), title: "Adam"}/
+                .c-bubble
+                  .msg Hi, i need support with my iPhone?
+                  %div
+                    %small 12:25 p.m.
+                  %span
+              .chat-conv
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar1_50.jpg"), title: "MiguelMich"}/
+                .c-bubble
+                  .msg Hello, how are you? i just though you were here, i'll see you tomorrow.
+                  %div
+                    %small 12:30 p.m.
+                  %span
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar_50.jpg"), title: "Adam"}/
+                .c-bubble
+                  .msg Hi, i need support with my iPhone?
+                  %div
+                    %small 12:25 p.m.
+                  %span
+          .chat-in
+            %form{action: "dfgdfg", method: "post", name: "sd"}
+              %input.btn.btn-info.pull-right{type: "submit", value: "SEND"}/
+              .input
+                %input{name: "msg", placeholder: "Send a message...", type: "text"}/
+              .chat-tools
+                %ul.nav.nav-pills
+                  %li.active
+                    %i.fa.fa-location-arrow
+                  %li
+                    %i.fa.fa-camera
+                  %li
+                    %i.fa.fa-microphone
+                  %li
+                    %i.fa.fa-cloud
+      #chat-2.tab-pane.cont
+        .chat-wi
+          .chat-space.nano.nscroller
+            .chat-content.content
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar4_50.jpg"), title: "Adam"}/
+                .c-bubble
+                  .msg Hey, are you there?
+                  %div
+                    %small 12:25 p.m.
+                  %span
+              .chat-conv
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar1_50.jpg"), title: "MiguelMich"}/
+                .c-bubble
+                  .msg I'm here, how was your day?
+                  %div
+                    %small 12:20 p.m.
+                  %span
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar4_50.jpg"), title: "Adam"}/
+                .c-bubble
+                  .msg It was fine, just making some designs...
+                  %div
+                    %small 12:25 p.m.
+                  %span
+          .chat-in
+            %form{action: "dfgdfg", method: "post", name: "sd"}
+              %input.btn.btn-info.pull-right{type: "submit", value: "SEND"}/
+              .input
+                %input{name: "msg", placeholder: "Send a message...", type: "text"}/
+              .chat-tools
+                %ul.nav.nav-pills
+                  %li.active
+                    %i.fa.fa-location-arrow
+                  %li
+                    %i.fa.fa-camera
+                  %li
+                    %i.fa.fa-microphone
+                  %li
+                    %i.fa.fa-cloud
+      #chat-3.tab-pane
+        .chat-wi
+          .chat-space.nano.nscroller
+            .chat-content.content
+              .chat-conv
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar1_50.jpg"), title: "MiguelMich"}/
+                .c-bubble
+                  .msg Hello, what can i do for you?
+                  %div
+                    %small 12:20 p.m.
+                  %span
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar3_50.jpg"), title: "Lucy"}/
+                .c-bubble
+                  .msg Hi, i need support with my iPhone?
+                  %div
+                    %small 12:25 p.m.
+                  %span
+              .chat-conv
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar1_50.jpg"), title: "MiguelMich"}/
+                .c-bubble
+                  .msg Hello, how are you? i just though you were here, i'll see you tomorrow.
+                  %div
+                    %small 12:30 p.m.
+                  %span
+              .chat-conv.sent
+                %img.c-avatar.ttip{alt: "Avatar", "data-toggle" => "tooltip", src: image_url("theme/avatar3_50.jpg"), title: "Lucy"}/
+                .c-bubble
+                  .msg Hi, i need support with my iPhone?
+                  %div
+                    %small 12:25 p.m.
+                  %span
+          .chat-in
+            %form{action: "dfgdfg", method: "post", name: "sd"}
+              %input.btn.btn-info.pull-right{type: "submit", value: "SEND"}/
+              .input
+                %input{name: "msg", placeholder: "Send a message...", type: "text"}/
+              .chat-tools
+                %ul.nav.nav-pills
+                  %li.active
+                    %i.fa.fa-location-arrow
+                  %li
+                    %i.fa.fa-camera
+                  %li
+                    %i.fa.fa-microphone
+                  %li
+                    %i.fa.fa-cloud
+.row.dash-cols
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box.padding
+        .row.info
+          %div
+            %h3 Your Goals
+          %div
+            #com_stats{style: "height:98px;"}
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box.padding
+        .row.info.text-shadow
+          .col-xs-12
+            %h3 Comments
+          .col-xs-12
+            #com2_stats{style: "height:98px;"}
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box
+        .fact-data
+          .epie-chart{"data-percent" => "45"}
+            %span 0%
+        .fact-data.no-padding.text-shadow
+          %h3 Users sales
+          %h2 4,522
+          %p Monthly sales from users.
+.row.dash-cols
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-comment>
+          Comments
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Positive
+          %h2 60%
+        .fact-data.text-center
+          %h3 Negative
+          %h2 40%
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-bug>
+          Tickets
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Frequency
+          %h2 53%
+        .fact-data.text-center
+          %h3 Pending
+          %h2 13
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-comment>
+          Comments
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Positive
+          %h2 60%
+        .fact-data.text-center
+          %h3 Negative
+          %h2 40%

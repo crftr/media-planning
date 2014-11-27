@@ -1,0 +1,35 @@
+:coffeescript
+  $ ->
+    showSidebarItem('campaigns')
+
+    $('#datatable').dataTable({
+      # disable the label for the search field
+      "oLanguage": { "sSearch": '' }
+      # disable sorting on the actions column
+      "aoColumns": [
+        null,
+        { "bSortable": false }
+      ]
+      # no sorting initially... sorting if the user clicks a header
+      "aaSorting": []
+    });
+    $('.dataTables_filter input').attr("placeholder", "Search");
+
+.block-flat
+  .header
+    %h3 Campaign Types
+  .content
+    .table-responsive
+      #datatable_wrapper.dataTables_wrapper.form-inline{:role => "grid"}
+        %table#datatable.mplan-datatable.table.table-bordered.dataTable{"aria-describedby" => "client list"}
+          %thead
+            %tr{:role => "row"}
+              %th.sorting_desc{"aria-controls" => "datatable", "aria-label" => "Campaign type: activate to sort column ascending", "aria-sort" => "descending", :colspan => "1", :role => "columnheader", :rowspan => "1", :style => "width: auto;", :tabindex => "0"} Campaign type
+              %th{"aria-controls" => "datatable", "aria-label" => "Actions", :colspan => "1", :role => "columnheader", :rowspan => "1", :style => "width: 131px;", :tabindex => "0"}
+          %tbody{"aria-live" => "polite", "aria-relevant" => "all", :role => "alert"}
+
+            - @campaign_types.each do |campaign_type|
+              %tr.gradeA
+                %td.sorting_1 #{campaign_type}
+                %td.center
+                  = render partial: 'shared/datatable/actions'

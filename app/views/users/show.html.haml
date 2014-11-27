@@ -1,0 +1,315 @@
+:coffeescript
+  $ ->
+    App.dashBoard()
+    showSidebarItem('home')
+
+.row.dash-cols
+  .col-sm-12
+
+    .well{:style => "overflow: auto"}
+      #reportrange.pull-right{:style => "background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc"}
+        %i.glyphicon.glyphicon-calendar.fa.fa-calendar
+        %span July 23, 2014 - August 21, 2014
+        %b.caret
+      :javascript
+        $(document).ready(function() {
+          var cb = function(start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + ", label = " + label + "]");
+          }
+
+          var optionSet1 = {
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment(),
+            minDate: '01/01/2012',
+            maxDate: '12/31/2014',
+            dateLimit: { days: 60 },
+            showDropdowns: true,
+            showWeekNumbers: true,
+            timePicker: false,
+            timePickerIncrement: 1,
+            timePicker12Hour: true,
+            ranges: {
+              'Today': [moment(), moment()],
+              'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+              'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+              'This Month': [moment().startOf('month'), moment().endOf('month')],
+              'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            opens: 'left',
+            buttonClasses: ['btn btn-default'],
+            applyClass: 'btn-small btn-primary',
+            cancelClass: 'btn-small',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            locale: {
+              applyLabel: 'Submit',
+              cancelLabel: 'Clear',
+              fromLabel: 'From',
+              toLabel: 'To',
+              customRangeLabel: 'Custom',
+              daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+              monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+              firstDay: 1
+            }
+          };
+          $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+          $('#reportrange').daterangepicker(optionSet1, cb);
+
+          $('#reportrange').on('show.daterangepicker', function() { console.log("show event fired"); });
+          $('#reportrange').on('hide.daterangepicker', function() { console.log("hide event fired"); });
+          $('#reportrange').on('apply.daterangepicker', function(ev, picker) { 
+           console.log("apply event fired, start/end dates are " 
+             + picker.startDate.format('MMMM D, YYYY') 
+             + " to " 
+             + picker.endDate.format('MMMM D, YYYY')
+           ); 
+          });
+          $('#reportrange').on('cancel.daterangepicker', function(ev, picker) { console.log("cancel event fired"); });
+        });
+
+
+.stats_bar
+  .butpro.butstyle{"data-intro" => "<strong>Beautiful Elements</strong> <br/> If you are looking for a different UI, this is for you!.", "data-step" => "2"}
+    .sub
+      %h2 ATTENDANCE
+      %span#total_clientes 130k
+    .stat
+      %span.spk1
+        %canvas{height: "16", style: "display: inline-block; width: 74px; height: 16px; vertical-align: top;", width: "74"}
+  .butpro.butstyle
+    .sub
+      %h2 GROSS SALES
+      %span $951,611
+    .stat
+      %span.up 13.5%
+  .butpro.butstyle
+    .sub
+      %h2 AD SPEND TO DATE
+      %span $52,340
+    .stat
+      %span.up 2.7%
+  .butpro.butstyle
+    .sub
+      %h2 GROSS IMPRESSIONS
+      %span 18
+    .stat
+      %span.equal 0%
+  .butpro.butstyle
+    .sub
+      %h2 ACQUISITION COST
+      %span 3%
+    .stat
+      %span.spk2
+  .butpro.butstyle
+    .sub
+      %h2 REMAINING AD BUDGET
+      %span 184
+    .stat
+      %span.spk3
+
+.row.dash-cols
+  .col-sm-6.col-md-6
+    .block
+      .header.no-border
+        %h2 Sales
+      .content.blue-chart{"data-intro" => "<strong>Unique Styled Plugins</strong> <br/> We put love in every detail to give a great user experience!.", "data-step" => "3"}
+        #site_statistics{style: "height:180px;"}
+      .content
+        .stat-data
+          .stat-blue
+            %h2 1,254
+            %span Total Sales
+        .stat-data
+          .stat-number
+            %div
+              %h2 83
+            %div
+              Total hits
+              br/
+              %span (Daily)
+          .stat-number
+            %div
+              %h2 57
+            %div
+              Views
+              %br/
+              %span (Daily)
+        .clear
+  .col-sm-6.col-md-6
+    .block
+      .header.no-border
+        %h2 Monitor
+      .content.red-chart
+        #site_statistics2{style: "height:152px;"}
+      .content.no-padding
+        %table.red
+          %thead
+            %tr
+              %th Name
+              %th.right
+                %span> 25%
+                C.P.U
+              %th.right
+                %span> 29%
+                Memory
+              %th.right
+                %span> 16%
+                Disc
+          %tbody.no-border-x
+            %tr
+              %td{style: "width:40%;"}
+                %i.fa.fa-sitemap
+                Server load
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-tasks
+                Apps
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-signal
+                Process
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+            %tr
+              %td
+                %i.fa.fa-bolt
+                Wamp Server
+              %td.text-right 0,2%
+              %td.text-right 13,2 MB
+              %td.text-right 0,1 MB/s
+
+.row.dash-cols
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-comment>
+          Comments
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Positive
+          %h2 60%
+        .fact-data.text-center
+          %h3 Negative
+          %h2 40%
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-bug>
+          Tickets
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Frequency
+          %h2 53%
+        .fact-data.text-center
+          %h3 Pending
+          %h2 13
+  .col-sm-6.col-md-6.col-lg-4
+    .block
+      .header
+        %h2
+          %i.fa.fa-comment>
+          Comments
+      .content.no-padding
+        .fact-data.text-center
+          %h3 Positive
+          %h2 60%
+        .fact-data.text-center
+          %h3 Negative
+          %h2 40%
+
+.row.dash-cols
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box.padding
+        .row.info
+          %div
+            %h3 Your Goals
+          %div
+            #com_stats{style: "height:98px;"}
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box.padding
+        .row.info.text-shadow
+          .col-xs-12
+            %h3 Comments
+          .col-xs-12
+            #com2_stats{style: "height:98px;"}
+  .col-sm-6.col-md-6.col-lg-4
+    .widget-block
+      .white-box
+        .fact-data
+          .epie-chart{"data-percent" => "45"}
+            %span 0%
+        .fact-data.no-padding.text-shadow
+          %h3 Users sales
+          %h2 4,522
+          %p Monthly sales from users.
+
+.row.dash-cols
+  .col-sm-6.col-md-6
+    .block
+      .header
+        %h2
+          Invoice
+          %span.pull-right #45
+        %h3 Your order has been delivered
+      .content.no-padding
+        %ul.items
+          %li
+            %i.fa.fa-file-text>
+            Filet Mignon
+            %span.pull-right.value $35
+            %small Italian food
+          %li
+            %i.fa.fa-file-text>
+            Blue beer
+            %span.pull-right.value $35
+            %small Bar drinks
+          %li
+            %i.fa.fa-file-text>
+            T-shirts
+            %span.pull-right.value $35
+            %small Software development
+          %li
+            %i.fa.fa-file-text>
+            Cloud App
+            %span.pull-right.value $35
+            %small Game department
+          %li
+            %i.fa.fa-file-text>
+            Black Metal Music
+            %span.pull-right.value $35
+            %small Metal genre
+      .total-data.bg-blue
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %h2
+            Total
+            %b.caret
+            %span.pull-right $25.3
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"} Print receipt
+          %li
+            %a{href: "#"} Send invoice to...
+          %li
+            %a{href: "#"} Payment
+  .col-sm-6.col-md-6
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", href: "#home"} Home
+    .tab-content
+      #home.tab-pane.active.cont
+        %h2.text-center Our Experience
+        #piec{style: "height:300px;margin-top:25px;"}

@@ -1,0 +1,69 @@
+.container-fluid
+  .navbar-header
+    %button.navbar-toggle{'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button'}
+      %span.fa.fa-gear
+    %a.navbar-brand{href: '#'}
+      %span MediaPlanning
+  .navbar-collapse.collapse
+    %ul.nav.navbar-nav
+      %li
+        = link_to 'Home', user_path(current_user)
+      %li
+        %a{href: '#'} Support
+      %li.dropdown
+        %a.dropdown-toggle#quick-add{'data-toggle' => 'dropdown', href: '#'}
+          %i.fa.fa-plus-square
+          Quick Add
+          %b.caret
+        %ul.dropdown-menu.col-menu-2
+          %li.col-sm-6.no-padding
+            %ul
+              %li.dropdown-header
+                %i.fa.fa-file-text-o>
+                Contracts
+              %li
+                = link_to 'New Contract', new_contract_path
+              %li.dropdown-header
+                %i.fa.fa-ticket>
+                Tickets
+              %li
+                %a{href: '#'} New Ticket Data
+            %ul
+              %li.dropdown-header
+                %i.fa.fa-database>
+                Entities
+              %li
+                = link_to 'New Client', new_client_path, remote: true
+              %li
+                = link_to 'New Engagement', new_engagement_path, remote: true
+              %li
+                = link_to 'New Vendor', new_vendor_path, remote: true
+          %li.col-sm-6.no-padding
+            %ul
+              %li.dropdown-header
+                %i.fa.fa-building-o>
+                Organization
+              %li
+                = link_to 'New Financial Year', new_financial_year_path, remote: true
+            %ul
+              %li.dropdown-header
+                %i.fa.fa-list-ul>
+                System Types
+              %li
+                = link_to 'New Advertising Type', new_advertising_type_path, remote: true
+              %li
+                = link_to 'New Campaign Type', new_campaign_type_path, remote: true
+              %li
+                = link_to 'New Media Type', new_media_type_path, remote: true
+    %ul.nav.navbar-nav.navbar-right.user-nav
+      %li.dropdown.profile_menu
+        %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+          %span
+            = current_user.name
+          %b.caret
+        %ul.dropdown-menu
+          / %li
+          /   %a{href: '#'} My Account
+          / %li.divider
+          %li
+            = link_to('Sign Out', destroy_user_session_path, :method => :delete)

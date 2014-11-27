@@ -1,0 +1,10 @@
+*.psd
+*.pdf
+doc
+features
+gems
+log
+public/uploads
+spec
+tmp
+test

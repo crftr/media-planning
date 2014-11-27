@@ -1,0 +1,27 @@
+#cl-wrapper.login-container
+  .middle-login
+    .block-flat
+      .header
+        %h3.text-center
+          %img.logo-img{alt: "logo", src: image_url("theme/logo.png")}>/
+          MediaPlanning
+      %div
+        = render 'shared/notice'
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+          %form.form-horizontal{action: "index.html", style: "margin-bottom: 0px !important;"}
+            .content
+              %h4.title{style: 'color: #555555'} Member Access
+              .form-group
+                .col-sm-12
+                  .input-group
+                    %span.input-group-addon
+                      %i.fa.fa-fw.fa-user
+                    = f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'Username'
+              .form-group
+                .col-sm-12
+                  .input-group
+                    %span.input-group-addon
+                      %i.fa.fa-fw.fa-lock
+                    = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+            .foot
+              = f.submit "Sign in", class: 'btn btn-primary'

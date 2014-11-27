@@ -1,0 +1,13 @@
+
+.mplan-form {
+  input.btn {
+    margin-top: 20px;
+    margin-right: 5px;
+    margin-left: 0;
+  }
+
+  .action-group {
+    @extend .col-sm-offset-3;
+    @extend .col-sm-8;
+  }
+}
