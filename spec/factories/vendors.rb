@@ -13,6 +13,6 @@
 FactoryGirl.define do
   factory :vendor do
     user
-    name  { Faker::Company.name }
+    name { Faker::Company.name }
   end
 end

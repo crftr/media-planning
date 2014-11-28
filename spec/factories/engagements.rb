@@ -23,8 +23,8 @@ FactoryGirl.define do
 
   factory :engagement do
     client
-    name      { FactoryGirl.generate :engagement_name }
-    url       { Faker::Internet.url }
-    phone     { Faker::PhoneNumber.phone_number }
+    name  { FactoryGirl.generate :engagement_name }
+    url   { Faker::Internet.url }
+    phone { Faker::PhoneNumber.phone_number }
   end
 end

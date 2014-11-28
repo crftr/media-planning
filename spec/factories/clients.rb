@@ -12,6 +12,6 @@
 FactoryGirl.define do
   factory :client do
     user
-    name    { Faker::Company.name }
+    name { Faker::Company.name }
   end
 end

@@ -13,6 +13,6 @@
 
 FactoryGirl.define do
   factory :media_type do
-    name  { Faker::Lorem.word }
+    name { Faker::Lorem.word }
   end
 end
