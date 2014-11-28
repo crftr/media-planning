@@ -4,4 +4,4 @@ A web application to responsibly track event advertising spend against a budget.
 
 == Current Status
 
-Incomplete.  But I would consider resuming development if a new partner or customer so desired.  Contact me!
+Incomplete.  But I would consider resuming development if a new partner or customer so desired.  Contact me at <michael.herrera@gmail.com>
