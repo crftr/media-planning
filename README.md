@@ -1,6 +1,6 @@
 # MediaPlanning
 
-A web application to responsibly track event advertising spend against a budget.  Event ticket sales are also tracked to show income trends against advertising spend.
+A web application to easily track advertising spend against a budget.  Event ticket sales are intended to be tracked to show income trends against advertising spend.
 
 Currently uses:
  * Rails 4.1
@@ -9,7 +9,7 @@ Currently uses:
 
 ### Testing
 
-Backed by a rspec and cucumber test suite.
+Backed by rspec and cucumber tests.
 
 
 ### Current Status
