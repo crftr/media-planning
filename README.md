@@ -11,11 +11,11 @@ Currently uses:
 
 ### Demo
 
-A demo version of this app is available.  The database is reset every hour.
-
 https://media-planning.herokuapp.com
-user: demo
-pass: demo
+* user: demo
+* pass: demo
+
+_Note: The database is reset every hour._
 
 
 ### Testing
