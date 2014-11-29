@@ -1,14 +1,8 @@
 require 'rubygems'
-require 'spork'
 require 'capybara/rspec'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
+require 'codeclimate-test-reporter'
 
-Spork.prefork do
-end
-
-Spork.each_run do
-end
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience

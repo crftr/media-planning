@@ -4,7 +4,7 @@ module BootstrapFlashHelper
   def bootstrap_flash(options = {})
     flash_messages = []
     flash.each do |type, message|
-      # Skip empty messages, e.g. for devise messages set to nothing in a locale file.
+      # Skip empty messages, e.g. undefined devise locale strings.
       next if message.blank?
 
       type = type.to_sym

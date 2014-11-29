@@ -1,6 +1,7 @@
 # MediaPlanning
 
 [![Code Climate](https://codeclimate.com/github/crftr/media-planning/badges/gpa.svg)](https://codeclimate.com/github/crftr/media-planning)
+[![Test Coverage](https://codeclimate.com/github/crftr/media-planning/badges/coverage.svg)](https://codeclimate.com/github/crftr/media-planning)
 
 A web application to easily track advertising spend against a budget.  Event ticket sales are intended to be tracked to show income trends against advertising spend.
 

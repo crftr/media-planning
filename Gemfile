@@ -46,7 +46,6 @@ group :development do
   gem 'annotate'
   gem 'guard-bundler',    require: false
   gem 'guard-livereload', require: false
-  gem 'guard-spork',      require: false
 end
 
 group :development, :test do
@@ -64,7 +63,6 @@ group :development, :test do
 
   gem 'listen'
   gem 'rb-fsevent'
-  gem 'spork-rails'
   gem 'growl'
 
   # faux factories
@@ -79,6 +77,7 @@ group :test do
   gem 'email_spec', '>= 1.2.1'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem "codeclimate-test-reporter", require: false
 end
 
 group :production do
