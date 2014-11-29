@@ -1,11 +1,23 @@
+puts 'Removing old data...'
+
+AdvertisingType.destroy_all
+CampaignType.destroy_all
+Client.destroy_all
+Contract.destroy_all
+Engagement.destroy_all
+FinancialYear.destroy_all
+MediaType.destroy_all
+User.destroy_all
+Vendor.destroy_all
+
 
 puts 'Adding seed data...'
 
 User.create(
-  name:     'Mike Herrera',
-  username: 'mike',
-  email:    'mike@devoplabs.com',
-  password: 'mike12345')
+  name:     'Demo User',
+  username: 'demo',
+  email:    'demo@example.com',
+  password: 'demo')
 
 CampaignType.create(name: 'Extension',      global: true, display_order: 1)
 CampaignType.create(name: 'Closing',        global: true, display_order: 2)

@@ -9,6 +9,14 @@ Currently uses:
  * Rails 4.1
  * Bootstrap 3
 
+### Demo
+
+A demo version of this app is available.  The database is reset every hour.
+
+https://media-planning.herokuapp.com
+user: demo
+pass: demo
+
 
 ### Testing
 
