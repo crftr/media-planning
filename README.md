@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/crftr/media-planning/badges/gpa.svg)](https://codeclimate.com/github/crftr/media-planning)
 [![Test Coverage](https://codeclimate.com/github/crftr/media-planning/badges/coverage.svg)](https://codeclimate.com/github/crftr/media-planning)
 
-A web application to easily track advertising spend against a budget.  Event ticket sales are intended to be tracked to show income trends against advertising spend.
+A web application for event operators to track advertising spend against a budget.  Event ticket sales are also tracked to show income trends against advertising spend.
 
 Currently uses:
  * Rails 4.1
@@ -15,12 +15,12 @@ https://media-planning.herokuapp.com
 * user: demo
 * pass: demo
 
-_Note: The database is reset every evening._
+_note: The demo database is reset every evening._
 
 
 ### Current Status
 
-Incomplete.  But I would consider resuming development.  If interested, email me <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+Incomplete.  There are no current plans to further develop this codebase.  Work stopped once the speculative opportunity evaporated.  But I would be more than willing to chat with anyone if they had any interest or a related use-case.  Feel free to email me <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
 
 
 ### Testing
