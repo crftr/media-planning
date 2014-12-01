@@ -9,23 +9,23 @@ Currently uses:
  * Rails 4.1
  * Bootstrap 3
 
-### Demo
+## Demo
 
 https://media-planning.herokuapp.com
-* user: demo
-* pass: demo
+ * user: demo
+ * pass: demo
 
-_note: The demo database is reset every evening._
+_Note: the demo database is reset every evening._
 
 
-### Current Status
+## Current Status
 
 Incomplete.  There are no current plans to further develop this codebase.  Work stopped once the speculative opportunity evaporated.  But I would be more than willing to chat with anyone if they had any interest or a related use-case.  Feel free to email me <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#109;&#105;&#99;&#104;&#97;&#101;&#108;&#46;&#104;&#101;&#114;&#114;&#101;&#114;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
 
 
-### Testing
+## Testing
 
-Backed by rspec and cucumber tests.
+Backed by rspec and cucumber/capybara/selenium tests.
 
 
 ## Contributing

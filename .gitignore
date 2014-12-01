@@ -22,4 +22,7 @@
 # Environment vars
 .rbenv-vars
 
+# Codeclimate coverage vestige
+/coverage
+
 .netrc

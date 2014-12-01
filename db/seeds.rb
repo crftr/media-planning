@@ -13,11 +13,35 @@ Vendor.destroy_all
 
 puts 'Adding seed data...'
 
-User.create(
+user = User.create(
   name:     'Demo User',
   username: 'demo',
   email:    'demo@example.com',
   password: 'demo')
+
+[2013, 2014, 2015, 2016].each do |year|
+  MPLAN::Creators::FinancialYearCreator.new(
+    user: user,
+    name: "FY#{year}",
+    start_date: Date.new(year, 1, 1),
+    end_date: Date.new(year, 12, 31)).save
+end
+
+['Nederlander', 'Live Nation', 'AEG'].each do |client_name|
+  MPLAN::Creators::ClientCreator.new(user: user, client_name: client_name).save
+end
+
+clients = Client.all
+['Mew', 'Local Natives', 'Stolen Babies', 'Louis CK', 'Françoise Gilot',
+ 'The Tony Danza Tapdance Extravaganza'].each do |engagement_name|
+  client = clients.shuffle[0]
+  MPLAN::Creators::EngagementCreator.new(client: client, engagement_name: engagement_name).save
+end
+
+['iHeartMedia', 'Hearst Corp', 'Hubbard Broadcasting', 'CBS Corp',
+ 'Ion Media Networks', 'News Corp', 'Vice', 'Organizações Globo'].each do |vendor_name|
+  MPLAN::Creators::VendorCreator.new(user: user, vendor_name: vendor_name).save
+end
 
 CampaignType.create(name: 'Extension',      global: true, display_order: 1)
 CampaignType.create(name: 'Closing',        global: true, display_order: 2)
