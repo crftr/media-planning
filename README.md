@@ -1,8 +1,5 @@
 # MediaPlanning
 
-[![Code Climate](https://codeclimate.com/github/crftr/media-planning/badges/gpa.svg)](https://codeclimate.com/github/crftr/media-planning)
-[![Test Coverage](https://codeclimate.com/github/crftr/media-planning/badges/coverage.svg)](https://codeclimate.com/github/crftr/media-planning)
-
 A web application for event operators to track advertising spend against a budget.
 
 Currently uses:
